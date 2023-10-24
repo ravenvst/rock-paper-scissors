@@ -14,19 +14,42 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === computerSelection){
-        return `Its a TIE - both picks were ${computerSelection}`
+        return "tie";
     } else if (
         playerSelection === "rock" && computerSelection === "paper" 
     || playerSelection === "paper" && computerSelection === "scissors" 
     || playerSelection === "scissors" && computerSelection === "rock") {
-        return `You LOSE - ${computerSelection} beats ${playerSelection}.`;
+        return "lost";
     }
     else if (
         playerSelection === "rock" && computerSelection === "scissors" 
     || playerSelection === "paper" && computerSelection === "rock" 
     || playerSelection === "scissors" && computerSelection === "paper") {
-        return `You WIN - ${playerSelection} beats ${computerSelection}.`;
+        return "won";
     } else {
-        return "enter one of the options: rock, paper, scissors"
+        return "error";
+    }
+}
+
+function game(){
+    let wins = 0;
+    let loses = 0;
+    for (let i = 0; i < 5; i++){
+        let selected = prompt("Write rock, paper or scissors");
+        let computerSelection = getComputerChoice();
+        let roundResult = playRound(selected, computerSelection);
+        if (roundResult === "won") { 
+            wins++;
+            console.log(`You WIN - ${selected} beats ${computerSelection}.`);
+        } else if (roundResult === "lost") {
+            loses++;
+            console.log(`You LOSE - ${computerSelection} beats ${selected}.`);
+        } else if (roundResult === "tie"){
+            console.log(`Its a TIE - both picks were ${computerSelection}`);
+        } else {
+            console.log("enter one of the following words: rock, paper, scissors");
+        }
+        console.log(`You won ${wins} times and lost ${loses} times.`);
+        
     }
 }

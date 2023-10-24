@@ -48,8 +48,16 @@ function game(){
             console.log(`Its a TIE - both picks were ${computerSelection}`);
         } else {
             console.log("enter one of the following words: rock, paper, scissors");
+            i--;
         }
         console.log(`You won ${wins} times and lost ${loses} times.`);
         
+    }
+    if (wins > loses) {
+        console.log("You're the WINNER!");
+    } else if (loses > wins) {
+        console.log("You lost! :(");
+    } else if (loses === wins) {
+        console.log("You're tied");
     }
 }

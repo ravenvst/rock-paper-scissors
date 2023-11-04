@@ -12,7 +12,7 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
+    //playerSelection = playerSelection.toLowerCase();
     if (playerSelection === computerSelection){
         return "tie";
     } else if (
@@ -34,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
 function game(){
     let wins = 0;
     let loses = 0;
-    for (let i = 0; i < 5; i++){
+    /*for (let i = 0; i < 5; i++){
         let selected = prompt("Write rock, paper or scissors");
         let computerSelection = getComputerChoice();
         let roundResult = playRound(selected, computerSelection);
@@ -52,7 +52,7 @@ function game(){
         }
         console.log(`You won ${wins} times and lost ${loses} times.`);
         
-    }
+    } */
     if (wins > loses) {
         console.log("You're the WINNER!");
     } else if (loses > wins) {
@@ -61,3 +61,9 @@ function game(){
         console.log("You're tied");
     }
 }
+
+const btns = document.querySelectorAll("button");
+
+btns.forEach(function (btn) {
+    btn.addEventListener("click", () => console.log(playRound(btn.innerHTML, getComputerChoice())))
+});

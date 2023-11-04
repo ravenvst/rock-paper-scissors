@@ -12,7 +12,6 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection) {
-    //playerSelection = playerSelection.toLowerCase();
     if (playerSelection === computerSelection){
         return "tie";
     } else if (

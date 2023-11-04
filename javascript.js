@@ -31,44 +31,39 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game(){
-    let wins = 0;
-    let loses = 0;
-    /*for (let i = 0; i < 5; i++){
-        let selected = prompt("Write rock, paper or scissors");
-        let computerSelection = getComputerChoice();
-        let roundResult = playRound(selected, computerSelection);
-        if (roundResult === "won") { 
-            wins++;
-            console.log(`You WIN - ${selected} beats ${computerSelection}.`);
-        } else if (roundResult === "lost") {
-            loses++;
-            console.log(`You LOSE - ${computerSelection} beats ${selected}.`);
-        } else if (roundResult === "tie"){
-            console.log(`Its a TIE - both picks were ${computerSelection}`);
-        } else {
-            console.log("enter one of the following words: rock, paper, scissors");
-            i--;
-        }
-        console.log(`You won ${wins} times and lost ${loses} times.`);
-        
-    } */
-    if (wins > loses) {
-        console.log("You're the WINNER!");
-    } else if (loses > wins) {
-        console.log("You lost! :(");
-    } else if (loses === wins) {
-        console.log("You're tied");
-    }
-}
-
 const btns = document.querySelectorAll("button");
 const div = document.querySelector("div");
-
+let wins = 0;
+let loses = 0;
 
 btns.forEach(function (btn) {
     
     btn.addEventListener("click", function () {
-        div.innerHTML = playRound(btn.innerHTML, getComputerChoice())
+        let roundResult = playRound(btn.innerHTML, getComputerChoice()); 
+
+        if (roundResult === "won") { 
+            wins++;
+        } else if (roundResult === "lost") {
+            loses++;
+        } else if (roundResult === "tie"){
+        } 
+        
+
+        div.innerHTML = "Current round: " + roundResult 
+        + " - Running score is: " + wins + " wins and " + loses + " loses"
+
+
+        if (wins >= 5 || loses >= 5) {
+            div.innerHTML = "Game over!";
+
+            if (wins > loses) {
+                div.innerHTML +=" You WIN!"
+            } else if (loses > wins) {
+                div.innerHTML += " You lost."
+            }
+            wins = 0;
+            loses = 0;
+        }
+        
     })
 });

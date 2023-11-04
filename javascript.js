@@ -63,7 +63,12 @@ function game(){
 }
 
 const btns = document.querySelectorAll("button");
+const div = document.querySelector("div");
+
 
 btns.forEach(function (btn) {
-    btn.addEventListener("click", () => console.log(playRound(btn.innerHTML, getComputerChoice())))
+    
+    btn.addEventListener("click", function () {
+        div.innerHTML = playRound(btn.innerHTML, getComputerChoice())
+    })
 });
